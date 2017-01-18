@@ -20,10 +20,12 @@ function Ship() {
   }
 
   this.render  = function() {
+    push();
     translate(this.pos.x, this.pos.y);
     var c = color(255, 204, 0);  fill(c); noStroke();
     rotate(this.heading + PI /2);    
     triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
+    pop();
   }
 
   this.turn = function() {
@@ -49,7 +51,7 @@ function Ship() {
 
     if(this.pos.y > height + this.r) {
       this.pos.x = -this.r;
-    }else if (this.pos.y < this.r) {
+    }else if (this.pos.y < -this.r) {
       this.pos.y = height + this.r;
     }
 
