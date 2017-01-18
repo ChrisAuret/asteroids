@@ -5,9 +5,18 @@ function Ship() {
   this.heading = 0;
   this.rotation = 0;
   this.vel = createVector(0,0);
+  this.isBoosting = false;
+
+  this.boosting = function(b){
+    this.isBoosting = b;
+  }
 
   this.update = function() {
+    if(this.isBoosting){
+      this.boost();
+    }
     this.pos.add(this.vel);
+    this.vel.mult(0.95);
   }
 
   this.render  = function() {
@@ -27,6 +36,7 @@ function Ship() {
 
   this.boost = function(){
     var force = p5.Vector.fromAngle(this.heading);
+    force.mult(0.5);
     this.vel.add(force);
   }
 }
