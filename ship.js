@@ -34,9 +34,24 @@ function Ship() {
     this.rotation = a;
   }
 
-  this.boost = function(){
+  this.boost = function() {
     var force = p5.Vector.fromAngle(this.heading);
     force.mult(0.5);
     this.vel.add(force);
+  }
+
+  this.edges = function() {
+    if(this.pos.x > width + this.r) {
+      this.pos.x = -this.r;
+    }else if (this.pos.x < -this.r) {
+      this.pos.x = width + this.r;
+    }
+
+    if(this.pos.y > height + this.r) {
+      this.pos.x = -this.r;
+    }else if (this.pos.y < this.r) {
+      this.pos.y = height + this.r;
+    }
+
   }
 }

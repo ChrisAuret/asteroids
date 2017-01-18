@@ -9,9 +9,10 @@ function setup() {
 
 function draw() {
   background(0);
+  ship.render();
   ship.turn();
   ship.update();
-  ship.render();
+  ship.edges();
 }
 
 function keyReleased(){
