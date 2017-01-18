@@ -10,7 +10,8 @@ function setup() {
 function draw() {
   background(0);
   ship.turn();
-    ship.render();
+  ship.update();
+  ship.render();
 }
 
 function keyReleased(){
@@ -22,6 +23,8 @@ function keyPressed() {
     ship.setRotation(0.1);
   } else if (keyCode == LEFT_ARROW){
     ship.setRotation(-0.1);
+  } else if ( keyCode == UP_ARROW ) {
+    ship.boost();
   }
 }
 
