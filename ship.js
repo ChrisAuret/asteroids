@@ -50,9 +50,11 @@ function Ship() {
     }
 
     if(this.pos.y > height + this.r) {
+      console.log("up first");
       this.pos.x = -this.r;
-    }else if (this.pos.y < -this.r) {
-      this.pos.y = height + this.r;
+    }else if (this.pos.y < this.r) {
+      console.log("down");
+      this.pos.y = height - this.r;
     }
 
   }
