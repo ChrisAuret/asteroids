@@ -1,5 +1,10 @@
-function Asteroid(){
-  this.pos = createVector(random(width), random(height));
+function Asteroid(pos) {
+
+  if(pos){
+    this.pos = pos.copy();
+  }else{
+    this.pos = createVector(random(width), random(height));
+  }
   this.r  = random(15, 50);
   this.total = floor(random(5, 15));
   this.offset = []
@@ -10,6 +15,13 @@ function Asteroid(){
 
   this.update = function(){
     this.pos.add(this.vel)
+  }
+
+  this.breakup = function(){
+    var newA = [];
+    newA[0] = new Asteroid(this.pos);
+    newA[1] = new Asteroid(this.pos);
+    return newA;
   }
 
   this.render = function() {

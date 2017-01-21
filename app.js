@@ -4,12 +4,17 @@ var asteroids = [];
 var lasers = [];
 
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  //createCanvas(windowWidth,windowHeight);
+  createCanvas(1000, 900);
   ship = new Ship();
 
   for(var i=0; i<5; i++){
     asteroids.push(new Asteroid());
   }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
@@ -29,10 +34,15 @@ function draw() {
     lasers[i].render();
     lasers[i].update();
 
-     for(var j=0; j < asteroids.length; j++) {
-       if (lasers[i].hits(asteroids[j])){
-       
-       }
+     for(var j=asteroids.length-1; j >= 0; j--) {
+       if (lasers[i].hits(asteroids[j])) {
+          var newAsteroids = asteroids[j].breakup();
+          
+          console.log(newAsteroids)
+          
+          //asteroids.push(newAsteroid);
+          asteroids.splice(j, 1);
+        }
     }
   }
 }
