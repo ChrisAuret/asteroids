@@ -26,4 +26,14 @@ function Laser(pos, angle) {
         return false;
       }
   }
+
+  this.offscreen = function() {
+    if(this.pos.x > width 
+      || this.pos.x < 0 
+      || this.pos.y > height 
+      || this.pos.y < 0 ) {
+        return true;
+      }
+        return false;
+  }
 }

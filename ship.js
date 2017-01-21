@@ -28,6 +28,15 @@ function Ship() {
     pop();
   }
 
+  this.hits = function(asteroid){
+    var d = dist(this.posx, this.pos.y, asteroid.pos.x, asteroid.pos.y);
+    if(d < this.r + asteroid.r) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   this.turn = function() {
     this.heading += this.rotation;
   }
